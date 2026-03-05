@@ -27,11 +27,12 @@ const updateBook = async (id, title, authorID, releaseYear) => {
 };
 
 const deleteBook = async (id) => {
-    // Delete related records from all tables that reference book
+
     await db.execute('DELETE FROM review WHERE bookID = ?', [id]);
     await db.execute('DELETE FROM loan WHERE bookID = ?', [id]);
     await db.execute('DELETE FROM book_has_category WHERE bookID = ?', [id]);
-    // Delete book
+
+    // Delete book!!!
     const [result] = await db.execute('DELETE FROM book WHERE bookID = ?', [id]);
     return result.affectedRows > 0;
 };

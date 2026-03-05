@@ -8,9 +8,8 @@ const loginUser = async (name, password) => {
     try {
         const user = await userRepository.findUserByName(name);
 
-        // Verify user exists and hashed password matches
         if (user && await bcrypt.compare(password, user.password)) {
-            // Create token with userID, name, and role
+
             const token = jwt.sign(
                 { id: user.userID, name: user.name, role: user.role }, 
                 JWT_SECRET, 

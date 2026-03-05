@@ -1,7 +1,7 @@
 const db = require('../data/db');
 
 const createUser = async (name, hashedPassword, email, phoneNumber, zipCode, role = 'user') => {
-    // Check if zipCode exists in city table first
+
     const [cityExists] = await db.execute('SELECT zipCode FROM city WHERE zipCode = ?', [zipCode]);
 
     if (cityExists.length === 0) {
@@ -36,9 +36,9 @@ const updateUser = async (id, name, email, phoneNumber, zipCode, role) => {
 };
 
 const deleteUser = async (id) => {
-    // Delete related records from loan table
+
     await db.execute('DELETE FROM loan WHERE userID = ?', [id]);
-    // Delete user
+
     const [result] = await db.execute('DELETE FROM user WHERE userID = ?', [id]);
     return result.affectedRows > 0;
 };

@@ -8,7 +8,7 @@ const { verifyToken, requireAdmin } = require('./v1/middleware/authMiddleware');
 const app = express();
 app.use(express.json());
 
-// register/login endpoints (open)
+// register/login endpoints
 app.post('/register', async (req, res) => {
     const { name, password, email, phoneNumber, zipCode, role } = req.body;
     try {
@@ -120,7 +120,6 @@ app.delete('/books/:id', verifyToken, requireAdmin, async (req, res) => {
     }
 });
 
-// other book routes could be added similarly
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`API server running on http://localhost:${PORT}`));
