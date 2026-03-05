@@ -65,9 +65,6 @@ Fullstack-Library-App/
 
 ## Installasjon og Kjøring
 
-> **Merk for sensor/veileder:** Du trenger ikke noen spesiell database-passord fra meg – bare klon GitHub-repoen og sett opp din egen MySQL.
-
-
 
 ### 1. Miljøvariabler (.env)
 
@@ -89,10 +86,7 @@ JWT_SECRET=your_secret_key  # Generer en sikker hemmelig nøkkel
 PORT=3000                   # API-port
 ```
 
-**Merk**: 
-- Pass på å endre `DB_PASS` til ditt faktiske MySQL-passord
-- Sørg for at `library_db`-databasen eksisterer i MySQL
-- `.env`-filen skal **aldri** commites til git (allerede i `.gitignore`)
+
 
 ### 2. Kjøring av server
 
