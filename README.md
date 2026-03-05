@@ -141,6 +141,20 @@ POST /register
   "phoneNumber": "12345678",
   "zipCode": 12345
 }
+
+
+Registrering (Admin):
+For å teste admin-funksjoner, legg til "role": "admin" i forespørselen:
+POST /register
+{
+  "name": "admin_user",
+  "password": "password123",
+  "email": "admin@example.com",
+  "phoneNumber": "12345678",
+  "zipCode": 12345,
+  "role": "admin"
+}
+
 ```
 
 **Innlogging:**
