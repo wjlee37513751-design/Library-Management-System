@@ -1,8 +1,8 @@
-# 📚 Bibliotekstyringssystem API
+# Bibliotekstyringssystem API
 
 Dette prosjektet er et RESTful API for et bibliotekstyringssystem, bygget med Node.js og MySQL. Løsningen er designet for å møte kravene til Høy vurdering ved å implementere Repository Pattern, JWT-autentisering, og rollebasert tilgangskontroll.
 
-## 🛠 Teknologier
+## Teknologier
 
 - **Runtime**: Node.js
 - **Rammeverk**: Express.js
@@ -10,7 +10,7 @@ Dette prosjektet er et RESTful API for et bibliotekstyringssystem, bygget med No
 - **Autentisering**: JSON Web Token (JWT)
 - **Sikkerhet**: Bcrypt for passord-hashing
 
-## 🏗 Arkitektur (Repository Pattern)
+## Arkitektur (Repository Pattern)
 
 Prosjektet følger en lagdelt arkitektur for å sikre lav kobling mellom API-et og databasen:
 
@@ -19,7 +19,7 @@ Prosjektet følger en lagdelt arkitektur for å sikre lav kobling mellom API-et 
 - **Repositories**: Utfører SQL-spørringer og sikrer dataintegritet
 - **Middleware**: Verifiserer JWT-tokens og sjekker administrative rettigheter (`verifyToken`, `requireAdmin`)
 
-## 🔐 Sikkerhetsfunksjoner
+## Sikkerhetsfunksjoner
 
 - **Passord-hashing**: Alle passord blir hashet med bcrypt før lagring i databasen
 - **Rollebasert tilgangskontroll (RBAC)**:
@@ -27,7 +27,43 @@ Prosjektet følger en lagdelt arkitektur for å sikre lav kobling mellom API-et 
   - **Admin**: Full tilgang til brukeradministrasjon og modifisering av bokdata
 - **Referansiell integritet**: Ved sletting av bøker eller brukere, blir relaterte data i tabeller som `loan`, `review` og `book_has_category` slettet først for å unngå Foreign Key-feil
 
-## 🚀 Installasjon og Kjøring
+## Prosjektstruktur
+
+```
+Fullstack-Library-App/
+├── README.md
+├── backend/
+│   ├── package.json
+│   └── src/
+│       ├── server.js
+│       ├── v1/
+│       │   ├── controllers/
+│       │   │   ├── authController.js
+│       │   │   └── bookController.js
+│       │   ├── data/
+│       │   │   └── db.js
+│       │   ├── middleware/
+│       │   │   └── authMiddleware.js
+│       │   ├── repositories/
+│       │   │   ├── bookRepository.js
+│       │   │   └── userRepository.js
+│       │   └── routes/
+│       │       ├── authRoutes.js
+│       │       └── bookRoutes.js
+└── frontend/
+```
+
+### Mappebeskrivelse
+
+- **backend/src/server.js**: Hovedserverfil som initialiserer Express-appen
+- **backend/src/v1/controllers/**: Håndterer forretningslogikk for autentisering og bokadministrasjon
+- **backend/src/v1/data/db.js**: Databasekonfigurasjon og tilkobling
+- **backend/src/v1/middleware/**: Autentiserings- og autorisasjonsmiddleware
+- **backend/src/v1/repositories/**: Database-abstraksjonslagfor brukere og bøker
+- **backend/src/v1/routes/**: API-rutedefinisjon
+- **frontend/**: Frontendapplikasjonen (under utvikling)
+
+## Installasjon og Kjøring
 
 ### 1. Miljøvariabler (.env)
 
@@ -52,9 +88,9 @@ npm install
 node src/server.js
 ```
 
-## 📋 API Endepunkter
+## API Endepunkter
 
-### 👤 User Endpoints
+### User Endpoints
 
 | Metode | Endepunkt     | Tilgang | Beskrivelse                          |
 |--------|---------------|---------|--------------------------------------|
@@ -64,7 +100,7 @@ node src/server.js
 | PUT    | `/users/:id`  | Admin   | Oppdaterer brukerinformasjon eller rolle |
 | DELETE | `/users/:id`  | Admin   | Sletter bruker og tilhørende lån     |
 
-### 📖 Book Endpoints
+### Book Endpoints
 
 | Metode | Endepunkt     | Tilgang | Beskrivelse                          |
 |--------|---------------|---------|--------------------------------------|
@@ -73,7 +109,7 @@ node src/server.js
 | PUT    | `/books/:id`  | Admin   | Oppdaterer bokdetaljer               |
 | DELETE | `/books/:id`  | Admin   | Sletter bok (håndterer foreign keys automatisk) |
 
-## 🔧 Bruk av API
+## Bruk av API
 
 ### Autentisering
 
