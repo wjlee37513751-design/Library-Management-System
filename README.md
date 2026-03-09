@@ -1,7 +1,6 @@
 # Bibliotekstyringssystem API
 
-Dette prosjektet er et RESTful API for et bibliotekstyringssystem, bygget med Node.js og MySQL. Løsningen er designet for å møte kravene til Høy vurdering ved å implementere Repository Pattern, JWT-autentisering, og rollebasert tilgangskontroll.
-
+Dette prosjektet er et RESTful API for et bibliotekstyringssystem, bygget med Node.js og MySQL. 
 ## Teknologier
 
 - **Runtime**: Node.js
@@ -128,52 +127,3 @@ For admin-endepunkter, inkluder JWT-token i `Authorization`-headeren:
 ```
 Authorization: Bearer <your-jwt-token>
 ```
-
-### Eksempel på forespørsel
-
-**Registrering:**
-```json
-POST /register
-{
-  "name": "brukernavn",
-  "password": "passord123",
-  "email": "bruker@example.com",
-  "phoneNumber": "12345678",
-  "zipCode": 12345
-}
-
-
-Registrering (Admin):
-For å teste admin-funksjoner, legg til "role": "admin" i forespørselen:
-POST /register
-{
-  "name": "admin_user",
-  "password": "password123",
-  "email": "admin@example.com",
-  "phoneNumber": "12345678",
-  "zipCode": 12345,
-  "role": "admin"
-}
-
-```
-
-**Innlogging:**
-```json
-POST /login
-{
-  "name": "brukernavn",
-  "password": "passord123"
-}
-```
-
-**Bok opprettelse (Admin):**
-```json
-POST /books
-Authorization: Bearer <admin-token>
-{
-  "title": "Boktittel",
-  "authorID": 1,
-  "releaseYear": 2023
-}
-```
-
